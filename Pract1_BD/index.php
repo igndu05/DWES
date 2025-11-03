@@ -29,7 +29,7 @@
     }
 
     try {
-        $consulta = "select * from t_asignatura";
+        $consulta = "select * from t_asignaturas";
         $result_asig = mysqli_query($conexion, $consulta);
     } catch (Exception $e) {
         mysqli_close($conexion);

@@ -19,7 +19,7 @@ try {
     die(error_page("Práctica 8", "<h1>Práctica 8</h1><p>Error no se ha podido realizar la consulta: " . $e->getMessage() . "</p>"));
 }
 
-if (isset($_POST["btnDetalles"])) {
+if (isset($_POST["btnDetalles"]) || isset($_POST["btnBorrar"])) {
     try {
         $consulta = "select * from usuarios where id_usuario=" . $_POST["btnDetalles"];
         $result_detalle_usuario = mysqli_query($conexion, $consulta);

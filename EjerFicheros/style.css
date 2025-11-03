@@ -1,0 +1,33 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.error {
+    color: red;
+}
+
+body {
+    background-color: rgb(255, 231, 204);
+}
+
+div {
+    border: 2px solid black;
+    margin: 10px;
+    padding: 0 10px;
+}
+
+.input {
+    background-color: rgb(201, 238, 244);
+}
+
+.result {
+    background-color: rgb(167, 202, 167);
+}
+
+h6 {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px;
+    padding: 0;
+}

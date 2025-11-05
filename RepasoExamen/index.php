@@ -62,7 +62,7 @@
     while($tupla = mysqli_fetch_assoc($result_asig))
     |
     |
-    |-> si aqui hacemos $tupla["nombre"] accedemos a los nombres de esa query.
+    |__> si aqui hacemos $tupla["nombre"] accedemos a los nombres de esa query.
     */
     ?>
 </body>

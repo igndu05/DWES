@@ -2,7 +2,7 @@
 const SERVIDOR_BD="localhost";
 const USUARIO_BD="jose";
 const CLAVE_BD="josefa";
-const NOMBRE_BD="bd_cv4";
+const NOMBRE_BD="bd_foro";
 
 const TIEMPO_INACT=1;//Tiempo en minutos
 

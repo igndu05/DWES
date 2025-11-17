@@ -18,20 +18,20 @@ if(isset($_POST["btnLogin"]))
         catch(Exception $e)
         {
             session_destroy();
-            die(error_page("Primer Login", "<h1>Primer Login</h1><p>Error no se ha podido conectar a la BD: ".$e->getMessage()."</p>"));
+            die(error_page("Práctica 10", "<h1>Práctica 10</h1><p>Error no se ha podido conectar a la BD: ".$e->getMessage()."</p>"));
         }
 
 
         try
         {
-            $consulta="select id_usuario from usuarios where usuario='".$_POST["usuario"]."' and clave='".md5($_POST["clave"])."'";
+            $consulta="select id_usuario,tipo from usuarios where usuario='".$_POST["usuario"]."' and clave='".md5($_POST["clave"])."'";
             $result=mysqli_query($conexion,$consulta);
         }
         catch(Exception $e)
         {
             mysqli_close($conexion);
             session_destroy();
-            die(error_page("Primer Login", "<h1>Primer Login</h1><p>Error no se ha podido realizar la consulta: ".$e->getMessage()."</p>"));
+            die(error_page("Práctica 10", "<h1>Práctica 10</h1><p>Error no se ha podido realizar la consulta: ".$e->getMessage()."</p>"));
         }
 
         mysqli_close($conexion);
@@ -42,7 +42,11 @@ if(isset($_POST["btnLogin"]))
         {
             $_SESSION["id_usuario"]=$tupla["id_usuario"];
             $_SESSION["ultm_accion"]=time();
-            header("Location:index.php");
+
+            if($tupla["tipo"]=="normal")
+                header("Location:index.php");
+            else
+                header("Location:admin/gest_admin.php");
             exit;
         }
         else
@@ -52,6 +56,7 @@ if(isset($_POST["btnLogin"]))
         }    
 
     }
+    
 }
 
 ?>
@@ -60,14 +65,14 @@ if(isset($_POST["btnLogin"]))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Primer Login</title>
+    <title>Práctica 10</title>
     <style>
         .error{color:red}
         .mensaje{color:blue;font-size:1.25em}
     </style>
 </head>
 <body>
-    <h1>Primer Login</h1>
+    <h1>Práctica 10</h1>
     <form action="index.php" method="post">
         <p>
             <label for="usuario">Usuario: </label>

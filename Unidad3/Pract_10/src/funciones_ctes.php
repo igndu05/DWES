@@ -4,7 +4,8 @@ const USUARIO_BD="jose";
 const CLAVE_BD="josefa";
 const NOMBRE_BD="bd_foro";
 
-const TIEMPO_INACT=1;//Tiempo en minutos
+//Tiempo en minutos
+const TIEMPO_INACT=1;
 
 function error_page($title, $body)
 {

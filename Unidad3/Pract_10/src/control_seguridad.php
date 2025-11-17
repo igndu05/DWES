@@ -7,7 +7,7 @@ try
 catch(Exception $e)
 {
     session_destroy();
-    die(error_page("Primer Login", "<h1>Primer Login</h1><p>Error no se ha podido conectar a la BD: ".$e->getMessage()."</p>"));
+    die(error_page("Práctica 9", "<h1>Práctica 10</h1><p>Error no se ha podido conectar a la BD: ".$e->getMessage()."</p>"));
 }
 
 try
@@ -19,7 +19,7 @@ catch(Exception $e)
 {
     mysqli_close($conexion);
     session_destroy();
-    die(error_page("Primer Login", "<h1>Primer Login</h1><p>Error no se ha podido realizar la consulta: ".$e->getMessage()."</p>"));
+    die(error_page("Práctica 9", "<h1>Práctica 9</h1><p>Error no se ha podido realizar la consulta: ".$e->getMessage()."</p>"));
 }
 
 $datos_usu_log=mysqli_fetch_assoc($result);
@@ -29,9 +29,8 @@ if(!$datos_usu_log)
 {
     session_unset();
     $_SESSION["seguridad"]="Usted ya no se encuentra registrado en la BD";
-    header("Location:index.php");
+    header("Location:".$salto);
     exit;
-
 }
 // Acabo de pasar el control de baneo y
 // Ahora voy a pasar o no el control de inactividad
@@ -40,7 +39,7 @@ if(time()-$_SESSION["ultm_accion"]>TIEMPO_INACT*60)
 {
     session_unset();
     $_SESSION["seguridad"]="Tiempo de sesión expirado. Por favor vuelva a loguearse";
-    header("Location:index.php");
+    header("Location:".$salto);
     exit;
 }
 

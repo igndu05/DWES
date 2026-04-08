@@ -11,7 +11,22 @@
     <p><strong>Ciudad de nacimiento:</strong> <?php echo $_POST["nacido"];?></p>
     <p><strong>Sexo:</strong> <?php echo $_POST["sexo"];?></p>
 
-    <p>LAS AFICIONES VAN AQUI COMO UNA OL CON LIs</p>
+
+    <?php
+        if(isset($_POST["aficiones"]))
+        {
+            echo "<p>Las aficiones seleccionadas han sido:</p>";
+            echo "<ol>";
+            foreach ($_POST["aficiones"] as $value) {
+                echo "<li>".$value."</li>";
+            }
+            echo "</ol>";
+        }
+        else
+        {
+            echo "<p>No has seleccionado ninguna aficion</p>";
+        }
+    ?>
 
     <p><strong>Comentarios:</strong><br>
     <?php echo $_POST["comentarios"];?>

@@ -14,7 +14,7 @@ if (isset($_POST['btnReset']))
 
 if (isset($_POST["btnEnviar"])) {
     $error_nombre = $_POST["nombre"] == "";
-    $error_sexo = !($_POST["sexo"]);
+    $error_sexo = !isset($_POST["sexo"]);
     $error_comentarios = $_POST["comentarios"] == "";
 
 

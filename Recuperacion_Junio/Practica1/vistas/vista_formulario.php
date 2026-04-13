@@ -59,6 +59,23 @@
 
         <label for="archivo">Incluir mi foto (Máx. 500KB): </label>
         <input type="file" name="archivo" id="archivo" accept="image/*">
+        <?php
+            if(isset($_POST["btnEnviar"]) && $error_archivo)
+            {
+                if($_FILES["archivo"]["error"]) {
+                    echo "<span class='error'>* Error en la subida del fichero al servidor *</span>";
+                }
+                elseif(!tiene_extension($_FILES["archivo"]["name"])) {
+                    echo "<span class='error'>* El archivo seleccionado no tiene extension *</span>";
+                }
+                elseif(!es_imagen($_FILES["archivo"]["tmp_name"], $_FILES["archivo"]["size"])) {
+                    echo "<span class='error'>* No has seleccionado un archivo de tipo imagen *</span>";
+                }
+                else {
+                    echo "<span class='error'>* El archivo imagen seleccionado sobrepasa los 500 KB *</span>";
+                }
+            }
+        ?>
         <br><br>
 
         <input <?php if(isset($_POST["boletin"])) echo "checked";?> type="checkbox" name="boletin" id="boletin"/>

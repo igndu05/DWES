@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <h1>Segundo formulario</h1>
+    <h1>Segundo Formulario</h1>
     <form action="index.php" method="post" enctype="multipart/form-data">
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" id="nombre" value="<?php if(isset($_POST["nombre"])) echo $_POST["nombre"];?>"/>
@@ -55,9 +55,11 @@
             if (isset($_POST["btnEnviar"]) && $error_comentarios)
                 echo "<span class='error'>* Campo obligatorio *</span>";
             ?>
-        <p></p>
         </p>
-
+        <p>
+            <label for="archivo">Incluir mi foto (Archivo de tipo imagen Máx. 500KB): </label>
+            <input type="file" name="archivo" id="archivo" accept="image/*"/>
+        </p>
         <button type="submit" name="btnEnviar">Enviar</button>
         <button type="submit" name="btnReset">Borrar Campos</button>
 

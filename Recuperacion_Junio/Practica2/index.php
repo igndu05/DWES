@@ -1,51 +1,36 @@
 <?php
-    if(isset($_POST["btnEntrar"]) || isset($_POST["btnRegistrarse"]))
-    {
-        $error_usuario = $_POST["usuario"] == "";
-        $error_clave = $_POST["clave"] == "";
+session_name("Pract2_Recp_25_26");
+session_start();
 
-        $error_login = $error_usuario || $error_clave;
-    }
+require "src/funciones_ctes.php";
+
+
+if(isset($_POST["btnCerrarSesion"]))
+{
+    session_destroy();
+    header("Location:index.php");
+    exit;
+}
+
+
+
+
+if(isset($_SESSION["usuario"]))
+{
+
+    // Hay que pasar el control de seguridad.
+
+    // Te has logueado y según tipo te cargaré vista_normal
+    // o vista_admin.
+    require "vistas/vista_logueado.php";
+}
+elseif(isset($_POST["btnRegistrar"]))
+{
+    require "vistas/vista_registro.php";
+}
+else
+{
+    require "vistas/vista_login.php";
+}
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practica Rec 2</title>
-    <style>
-        .error {
-            color: red;
-        }
-    </style>
-</head>
-<body>
-    <h1>Práctica Rec 2</h1>
-    <form action="index.php" method="post">
-        <p>
-            <label for="usuario">Usuario:</label>
-            <input type="text" name="usuario" id="usuario"/>
-            <?php
-            if((isset($_POST["btnEntrar"]) && $error_usuario) || (isset($_POST["btnRegistrarse"]) && $error_usuario))
-            {
-                echo "<span class='error'>* Debe añadir un usuario *</span>";
-            }
-            ?>
-        </p>
-        <p>
-            <label for="clave">Contraseña:</label>
-            <input type="password" name="clave" id="clave"/>
-            <?php
-            if((isset($_POST["btnEntrar"]) && $error_clave) || (isset($_POST["btnRegistrarse"]) && $error_clave))
-            {
-                echo "<span class='error'>* Debe añadir una contraseña *</span>";
-            }
-            ?>
-        </p>
-        <p>
-            <button type="submit" name="btnEntrar">Entrar</button>
-            <button type="submit" name="btnRegistrarse">Registrarse</button>
-        </p>
-    </form>
-</body>
-</html>

@@ -11,9 +11,9 @@ const CLAVE_BD="josefa";
 
 function obtener_productos() {
     try {
-        $conexion = new PDO("mysql:host=".SERVIDOR_BD.";dbname=".NOMBRE_BD,USUARIO_BD,CLAVE_BD)
+        $conexion = new PDO("mysql:host=".SERVIDOR_BD.";dbname=".NOMBRE_BD,USUARIO_BD,CLAVE_BD);
     } catch(PDOException $e){
-        $respuesta["error_bd"] = "Error no se ha podido conectar con la BD: ".$e-getMessage();
+        $respuesta["error_bd"] = "Error no se ha podido conectar con la BD: ".$e->getMessage();
         return $respuesta;
     }
 }

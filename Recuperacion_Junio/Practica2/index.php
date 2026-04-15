@@ -19,10 +19,20 @@ if(isset($_SESSION["usuario"]))
 {
 
     // Hay que pasar el control de seguridad.
+    require "src/control_seguridad.php";
 
     // Te has logueado y según tipo te cargaré vista_normal
     // o vista_admin.
-    require "vistas/vista_logueado.php";
+    if($datos_usu_log["tipo"] == "normal")
+    {
+        require "vistas/vista_normal.php";
+    }
+    else
+    {
+        require "vistas/vista_admin.php";
+    }
+
+    $conexion = null;
 }
 elseif(isset($_POST["btnRegistrar"]))
 {

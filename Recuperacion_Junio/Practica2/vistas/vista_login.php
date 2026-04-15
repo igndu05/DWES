@@ -31,6 +31,7 @@ if (isset($_POST["btnLogin"])) {
         {
             // Me logueo y salto a index
             $_SESSION["usuario"] = $datos["id_usuario"];
+            $_SESSION["ultima_accion"] = time();
             header("Location:index.php");
             exit;
         }
@@ -56,6 +57,7 @@ if (isset($_POST["btnLogin"])) {
     <title>Practica 2 - Recuperación 25-26</title>
     <style>
         .error {color:red}
+        .mensaje {color:blue; font-size: 25px;}
     </style>
 </head>
 
@@ -90,6 +92,14 @@ if (isset($_POST["btnLogin"])) {
             <button type="submit" name="btnRegistrar">Registrarse</button>
         </p>
     </form>
-</body>
 
+    <?php
+        if(isset($_SESSION["seguridad"]))
+        {
+            echo "<p class='mensaje'>".$_SESSION["seguridad"]."</p>";
+            session_destroy();
+        }
+            
+    ?>
+</body>
 </html>

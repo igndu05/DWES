@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST["btnLogin"])) {
-    $error_usuario = $_POST["usuario"] == "";
+    $error_usuario = $_POST["usuario_login"] == "";
     $error_clave = $_POST["clave"] == "";
     $error_form = $error_usuario || $error_clave;
 
@@ -15,7 +15,7 @@ if (isset($_POST["btnLogin"])) {
         try {
             $consulta = "SELECT id_usuario FROM usuarios WHERE usuario=? AND clave=?";
             $sentencia = $conexion->prepare($consulta);
-            $sentencia->execute([$_POST["usuario"], md5($_POST["clave"])]);
+            $sentencia->execute([$_POST["usuario_login"], md5($_POST["clave"])]);
         } catch (PDOException $e) {
             session_destroy();
             $sentencia = null;
@@ -66,11 +66,11 @@ if (isset($_POST["btnLogin"])) {
     <form action="index.php" method="post">
         <p>
             <label for="usuario">Usuario: </label>
-            <input type="text" name="usuario" id="usuario" value="<?php if(isset($_POST["usuario"])) echo $_POST["usuario"];?>"/>
+            <input type="text" name="usuario_login" id="usuario" value="<?php if(isset($_POST["usuario_login"])) echo $_POST["usuario_login"];?>"/>
             <?php
             if(isset($_POST["btnLogin"]) && $error_usuario)
             {
-                if($_POST["usuario"] == "")
+                if($_POST["usuario_login"] == "")
                     echo "<span class='error'>* Campo vacío *</span>";
                 else
                     echo "<span class='error'>* Credenciales usuario/clave inválidas *</span>";

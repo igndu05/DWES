@@ -12,6 +12,10 @@
             text-decoration: underline;
             cursor: pointer;
         }
+        .mensaje {
+            color: blue;
+            font-size: 1.5rem;
+        }
     </style>
 </head>
 <body>
@@ -22,5 +26,10 @@
         <button class="enlace" type="submit" name="btnCerrarSesion">Salir</button>
     </p>
     </form>
+    <?php
+    if (isset($_SESSION["registro"]))
+        echo "<p class='mensaje'>".$_SESSION["registro"]."</p>";
+        unset($_SESSION["registro"]);
+    ?>
 </body>
 </html>
